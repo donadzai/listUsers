@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import { useEffect, useState } from 'react';
 
-import { FetchAllUsers } from '../../sevices/UserService';
+import { FetchAllUsers } from '../../sevices';
 
 function TableUsers() {
     const [users, setUsers] = useState([]);
@@ -14,8 +14,8 @@ function TableUsers() {
     const getUsers = async () => {
         const data = await FetchAllUsers();
 
-        if (data && data.data && data.data.data) {
-            setUsers(data.data.data);
+        if (data && data.data) {
+            setUsers(data.data);
         }
     };
 
