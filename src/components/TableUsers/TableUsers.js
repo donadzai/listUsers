@@ -1,5 +1,4 @@
 import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
@@ -25,10 +24,10 @@ function TableUsers() {
 
     const handlePageClick = (event) => {
         setCurrentPage(event.selected + 1);
-    }
+    };
 
     return (
-        <Container>
+        <>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -74,7 +73,7 @@ function TableUsers() {
                 activeClassName="active"
                 renderOnZeroPageCount={null}
             />
-        </Container>
+        </>
     );
 }
 
