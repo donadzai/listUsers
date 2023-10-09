@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalComp({ isShowing, onHinde, onClick }) {
+function ModalComp({ isShowing, onHinde, onClick, dataUser }) {
     const [job, setJob] = useState('');
     const [name, setName] = useState('');
+    useEffect(() => {
+        setName(dataUser);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [onHinde])
 
     return (
         <>
             <Modal show={isShowing} onHide={onHinde}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New Job and Member</Modal.Title>
+                    <Modal.Title>Edit Job and Member</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -54,7 +58,7 @@ function ModalComp({ isShowing, onHinde, onClick }) {
                             onClick(name, job);
                         }}
                     >
-                        Save Changes
+                        Confirm
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -63,3 +67,4 @@ function ModalComp({ isShowing, onHinde, onClick }) {
 }
 
 export default ModalComp;
+
